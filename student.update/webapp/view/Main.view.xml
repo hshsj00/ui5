@@ -1,0 +1,23 @@
+<mvc:View controllerName="sync.c25.student.update.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+<!--기본 모델로 사용해서 앞에 모델 안적음-->
+        <List 
+            headerText="{i18n>titleList}"
+            items="{
+                path: '/StudentSet',
+                sorter: [{path:'Stdid'} ]
+            }">
+            <items>
+                <StandardListItem 
+                    title="{Stdid}"
+                    description="{Name}"
+                    type="Detail"
+                    detailPress="onItemPress"
+                />
+            </items>
+        </List>
+
+    </Page>
+</mvc:View>
