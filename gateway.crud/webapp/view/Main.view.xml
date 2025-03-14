@@ -1,0 +1,67 @@
+<mvc:View controllerName="sync.c25.gateway.crud.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table">
+
+    <Page 
+        id="page" 
+        title="{i18n>title}">
+        <mvc:XMLView viewName="sync.c25.gateway.crud.view.Create"/>
+
+        <t:Table 
+            rows="{/CarrierSet}"
+            class="sapUiSmallMargin"
+        >
+            <t:extension>
+                <Title text="{i18n>titleTable}"/>
+            </t:extension>
+            <t:columns>
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnCarrid}"/>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Carrid}"/>
+                    </t:template>
+                </t:Column>
+                  <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnCarrname}"/>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Carrname}"/>
+                    </t:template>
+                </t:Column>
+                 <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnCurrcode}"/>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Currcode}"/>
+                    </t:template>
+                    
+                </t:Column>
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnUrl}"/>
+                    </t:label>
+                    <t:template>
+                        <Text text="{Url}"/>
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <t:label>
+                        <Text text="수정"/>
+                    </t:label>
+                    <t:template>
+                        <Button 
+                            icon="sap-icon://edit"
+                            press="onUpdate"
+                            type="Transparent"
+                        />
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+    </Page>
+</mvc:View>
