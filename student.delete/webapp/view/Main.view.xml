@@ -1,0 +1,125 @@
+<mvc:View
+    controllerName="sync.c25.student.delete.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+>
+    <Page
+        id="page"
+        title="{i18n>title}"
+    >
+        <!--데이터 목록을 출력하는 주된 컨트롤은 3가지가 있다.
+    1. sap.m.List          = List
+    2. sap.m.table         = mTable = Responsive Table
+    3. sap.ui.table.Table  = tTable = Grid Table(abap의 alv에 더 흡사한 디자인)-->
+        <t:Table
+            rows="{/StudentSet}"
+            class="sapUiSmallMargin"
+        >
+            <t:extension>
+                <Title text="{i18n>titleTable}" />
+            </t:extension>
+            <t:columns>
+                <!--Aggregaion: tTable의 하위속성, 소문자로 시작한다. -->
+                <!-- tColumn은 label, template으로 2개 Aggregation이 있다. -->
+                <t:Column>
+                    <!--컨트롤, UI Element, 대문자로 시작한다. -->
+                    <t:label>
+                        <!--Aggregation: tColum의 하위 속성, 소문자로 시작한다. -->
+                        <Text text="{i18n>columnStdid}" />
+                        <!--컨트롤, UI Element, 대문자로 시작한다.-->
+                    </t:label>
+                    <t:template>
+                        <!--Aggregation: tColumn의 하위 속성, 소문자로 시작한다.-->
+                        <Input
+                            value="{Stdid}"
+                            editable="false"
+                        />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnName}" />
+                    </t:label>
+                    <t:template>
+                        <Text text="{Name}" />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnCreate}" />
+                    </t:label>
+                    <t:template>
+                        <!-- <Text text="{
+                            path: 'Erdat', 
+                            type: 'sap.ui.model.odata.type.Date', 
+                            formatOptions: { pattern: 'yyyy-MM-dd' } } {
+                            path: 'Erzet',
+                            type: 'sap.ui.model.odata.type.Time'} {Ernam}"/> -->
+                        <VBox>
+                            <Text
+                                text="{
+                            path: 'Erdat', 
+                            type: 'sap.ui.model.odata.type.Date', 
+                            formatOptions: { pattern: 'yyyy-MM-dd' } 
+                            }"
+                            />
+                            <Text
+                                text="{ 
+                            path: 'Erzet',
+                            type: 'sap.ui.model.odata.type.Time',
+                            formatOptions: { pattern: 'a hh:mm:ss'}
+                            }"
+                            />
+                            <Text text="{Ernam}" />
+                        </VBox>
+                    </t:template>
+                </t:Column>
+
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnUpdate}" />
+                    </t:label>
+                    <t:template>
+                        <VBox>
+                            <DatePicker
+                                value="{
+                            path: 'Aedat',
+                            type: 'sap.ui.model.odata.type.Date',
+                            formatOptions: {Pattern: 'yyyy-MM-dd' }
+                            }"
+                                editable="false"
+                            />
+
+                            <TimePicker
+                                value="{
+                                    path: 'Aezet',
+                                    type: 'sap.ui.model.odata.type.Time',
+                                    formatOptions: { pattern: 'HH:mm:ss'}
+                                }"
+                                editable="false"
+                            />
+
+                            <Input
+                                value="{Aenam}"
+                                editable="false"
+                            ></Input>
+                        </VBox>
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <t:label>
+                        <Text text="{i18n>columnAction}" />
+                    </t:label>
+                    <t:template>
+                        <Button
+                            icon="sap-icon://delete"
+                            press="onDelete"
+                            type="Transparent"
+                        />
+                    </t:template>
+                </t:Column>
+            </t:columns>
+        </t:Table>
+    </Page>
+</mvc:View>
